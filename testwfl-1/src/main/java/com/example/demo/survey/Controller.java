@@ -59,7 +59,7 @@ public class Controller {
 	}
 	
 	
-	@GetMapping("/questions")
+	@GetMapping(value="/questions",produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<QuestionEntity> getQuestions () throws Exception{ 
     	QuestionEntity questns = Qeservice.getQuestionsfromTable();
         return new ResponseEntity<>(questns, HttpStatus.OK);
