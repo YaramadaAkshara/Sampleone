@@ -3,6 +3,7 @@ package com.example.demo.survey;
 
 
 
+import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
@@ -15,6 +16,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Version;
+
+import org.hibernate.annotations.Type;
 
 import lombok.Data;
 
@@ -30,6 +34,11 @@ public class UserResponse {
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="userid")
 	 UserEntity ue;
+
+	@Version
+	@Type(type="dbtimestamp")
+	private Date version;
+	
 	
 	@ManyToMany(mappedBy="userResponsesSet")
 	Set<QuestionEntity> questionEntitySet;
